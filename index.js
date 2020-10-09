@@ -7,5 +7,5 @@ let deposit = 899999;
 let mission = "learn js";
 let period = "frfrfrfr";
 
-alert('learn');
+alert('learn jsjs');
 console.log('learn js');
