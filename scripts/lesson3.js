@@ -25,10 +25,10 @@ console.log(addExpenses.toLowerCase().split(', '));
 
 //lesson03
 
-let save1 = prompt('Введите обязательную статью расходов?');
-let save2 = prompt('Во сколько это обойдется?');
-let save3 = prompt('Введите обязательную статью расходов?');
-let save4 = prompt('Во сколько это обойдется?');
+const save1 = prompt('Введите обязательную статью расходов?');
+const save2 = prompt('Во сколько это обойдется?');
+const save3 = prompt('Введите обязательную статью расходов?');
+const save4 = prompt('Во сколько это обойдется?');
 
 
 const budgetMonth = money - save2 - save4;
@@ -47,6 +47,6 @@ if (budgetDay > 1200) {
     console.log('У вас средний уровень дохода');
 } else if (budgetDay <= 600 && budgetDay >= 0) {
     console.log('К сожалению у вас уровень дохода ниже среднего');
-} else if (budgetDay < 0) {
+} else {
     console.log('Что то пошло не так');
 }
