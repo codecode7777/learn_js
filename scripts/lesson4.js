@@ -18,10 +18,10 @@ let showTypeOf = function(data) {
 //lesson03
 
 
-const save1 = prompt('Введите обязательную статью расходов?');
-const save2 = prompt('Во сколько это обойдется?');
-const save3 = prompt('Введите обязательную статью расходов?');
-const save4 = prompt('Во сколько это обойдется?');
+const firstCostQuestion = prompt('Введите обязательную статью расходов?');
+const firstCostAnswer = Number(prompt('Во сколько это обойдется?'));
+const secondCostQuestion = prompt('Введите обязательную статью расходов?');
+const secondCostAnswer = Number(prompt('Во сколько это обойдется?'));
 
 
 
@@ -29,11 +29,11 @@ function getExpensesMonth(a, b) {
     return a + b;
 }
 
-function getAccumulatedMonth(money, save2, save4) {
-    return money - save2 - save4;
+function getAccumulatedMonth(money, firstCostAnswer, secondCostAnswer) {
+    return money - firstCostAnswer - secondCostAnswer;
 }
 
-const accumulatedMonth = getAccumulatedMonth(money, save2, save4);
+const accumulatedMonth = getAccumulatedMonth(money, firstCostAnswer, secondCostAnswer);
 
 function getTargetMonth(mission, accumulatedMonth) {
     return Math.ceil(mission / accumulatedMonth);
@@ -62,7 +62,7 @@ let getStatusIncome = function() {
 
 showTypeOf(deposit);
 
-console.log(getExpensesMonth(Number(save2), Number(save4)));
+console.log(getExpensesMonth(firstCostAnswer, secondCostAnswer));
 
 console.log(addExpenses.toLowerCase().split(', '));
 
