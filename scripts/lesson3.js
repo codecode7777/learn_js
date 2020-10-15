@@ -25,13 +25,13 @@ console.log(addExpenses.toLowerCase().split(', '));
 
 //lesson03
 
-const save1 = prompt('Введите обязательную статью расходов?');
-const save2 = prompt('Во сколько это обойдется?');
-const save3 = prompt('Введите обязательную статью расходов?');
-const save4 = prompt('Во сколько это обойдется?');
+const firstCostQuestion = prompt('Введите обязательную статью расходов?');
+const firstCostAnswer = Number(prompt('Во сколько это обойдется?'));
+const secondCostQuestion = prompt('Введите обязательную статью расходов?');
+const secondCostAnswer = Number(prompt('Во сколько это обойдется?'));
 
 
-const budgetMonth = money - save2 - save4;
+const budgetMonth = money - firstCostAnswer - secondCostAnswer;
 console.log('Бюджет на месяц: ' + budgetMonth);
 
 const budgetDay = budgetMonth / 30;
