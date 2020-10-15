@@ -11,18 +11,19 @@ const deposit = confirm('Есть ли у вас депозит в банке?')
 const mission = 5000000;
 const period = 4;
 
-let start = function() {
+/* let start = function() {
     money = prompt('ваш месячный доход?');
 
     while (!isNumber(money)) {
         money = prompt('ваш месячный доход?');
     }
-};
+}; */
 
-start();
+//start();
 
-
-
+do {
+    money = prompt('ваш месячный доход?');
+} while (!isNumber(money));
 
 let showTypeOf = function(data) {
     console.log(typeof(data));
@@ -31,15 +32,8 @@ let showTypeOf = function(data) {
 };
 
 
-//lesson03
-
-
-// const firstCostQuestion = prompt('Введите обязательную статью расходов?');
-// const firstCostAnswer = Number(prompt('Во сколько это обойдется?'));
-// const secondCostQuestion = prompt('Введите обязательную статью расходов?');
-// const secondCostAnswer = Number(prompt('Во сколько это обойдется?'));
-
 let firstCostQuestion, secondCostQuestion;
+
 
 function getExpensesMonth() {
     let sum = 0;
@@ -47,12 +41,17 @@ function getExpensesMonth() {
     for (let i = 0; i < 2; i++) {
 
         if (i === 0) {
-            firstCostQuestion = prompt('Введите обязательную статью расходов?');
+            firstCostQuestion = +prompt('Введите обязательную статью расходов?');
         } else if (i === 1) {
-            secondCostQuestion = prompt('Введите обязательную статью расходов?');
+            secondCostQuestion = +prompt('Введите обязательную статью расходов?');
         }
 
-        sum += +prompt('Во сколько это обойдется?');
+
+        sum += prompt('Во сколько это обойдется?');
+        while (!isNumber(sum)) {
+            sum += prompt('Во сколько это обойдется?');
+        }
+
     }
 
     return sum;
@@ -67,7 +66,11 @@ function getAccumulatedMonth() {
 const accumulatedMonth = getAccumulatedMonth();
 
 function getTargetMonth() {
-    return Math.ceil(mission / accumulatedMonth);
+    if (mission / accumulatedMonth > 0) {
+        return Math.ceil(mission / accumulatedMonth);
+    } else if (mission / accumulatedMonth < 0) {
+        return ('Цель не будет достигнута');
+    }
 }
 
 
