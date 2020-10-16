@@ -36,7 +36,9 @@ let firstCostQuestion, secondCostQuestion;
 
 
 function getExpensesMonth() {
-    let sum = 0;
+
+    let sum;
+    let res = sum;
 
     for (let i = 0; i < 2; i++) {
 
@@ -47,14 +49,17 @@ function getExpensesMonth() {
         }
 
 
-        sum += prompt('Во сколько это обойдется?');
-        while (!isNumber(sum)) {
-            sum += prompt('Во сколько это обойдется?');
-        }
+        sum = +prompt('Во сколько это обойдется?');
+
+
+        do {
+            sum = +prompt('Во сколько это обойдется?');
+        } while (!isNumber(sum));
 
     }
 
-    return sum;
+
+    return res;
 }
 
 let expensesAmount = getExpensesMonth();
