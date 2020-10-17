@@ -6,7 +6,7 @@ let isNumber = function(n) {
 
 
 function mainFunction() {
-    let num = 7;
+    const num = 7;
 
     function start() {
         let request = prompt('Угадай число от 1 до 100');
