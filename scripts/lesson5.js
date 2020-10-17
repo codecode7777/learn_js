@@ -11,19 +11,14 @@ const deposit = confirm('Есть ли у вас депозит в банке?')
 const mission = 5000000;
 const period = 4;
 
-/* let start = function() {
-    money = prompt('ваш месячный доход?');
+let start = function() {
 
-    while (!isNumber(money)) {
+    do {
         money = prompt('ваш месячный доход?');
-    }
-}; */
+    } while (!isNumber(money));
+};
 
-//start();
-
-do {
-    money = prompt('ваш месячный доход?');
-} while (!isNumber(money));
+start();
 
 let showTypeOf = function(data) {
     console.log(typeof(data));
@@ -38,7 +33,7 @@ let firstCostQuestion, secondCostQuestion;
 function getExpensesMonth() {
 
     let sum;
-    let res = sum;
+
 
     for (let i = 0; i < 2; i++) {
 
@@ -49,8 +44,7 @@ function getExpensesMonth() {
         }
 
 
-        sum = +prompt('Во сколько это обойдется?');
-
+        sum += +prompt('Во сколько это обойдется?');
 
         do {
             sum = +prompt('Во сколько это обойдется?');
@@ -59,7 +53,7 @@ function getExpensesMonth() {
     }
 
 
-    return res;
+    return sum;
 }
 
 let expensesAmount = getExpensesMonth();
