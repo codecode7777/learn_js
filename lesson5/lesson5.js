@@ -11,19 +11,14 @@ const deposit = confirm('Есть ли у вас депозит в банке?')
 const mission = 5000000;
 const period = 4;
 
-/* let start = function() {
-    money = prompt('ваш месячный доход?');
+let start = function() {
 
-    while (!isNumber(money)) {
+    do {
         money = prompt('ваш месячный доход?');
-    }
-}; */
+    } while (!isNumber(money));
+};
 
-//start();
-
-do {
-    money = prompt('ваш месячный доход?');
-} while (!isNumber(money));
+start();
 
 let showTypeOf = function(data) {
     console.log(typeof(data));
