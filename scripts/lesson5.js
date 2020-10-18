@@ -1,15 +1,10 @@
 'use strict';
 
+let money;
+
 let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
-
-let money;
-const income = "frilans";
-const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-const deposit = confirm('Есть ли у вас депозит в банке?');
-const mission = 5000000;
-const period = 4;
 
 let start = function() {
 
@@ -20,11 +15,32 @@ let start = function() {
 
 start();
 
+let appData = {
+    income: {},
+    addIncome: [],
+    expenses: {},
+    addExpenses: [],
+    deposit: false,
+    mission: 50000,
+    period: 3,
+    asking: function() {
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+        appData.addExpenses = addExpenses.toLowerCase().split(', ');
+        appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    }
+};
+
+
+
 let showTypeOf = function(data) {
     console.log(typeof(data));
     return data;
 
 };
+
+showTypeOf(money);
+showTypeOf(appData.deposit);
+showTypeOf(appData.income);
 
 
 let firstCostQuestion, secondCostQuestion;
@@ -46,9 +62,9 @@ function getExpensesMonth() {
 
         sum += +prompt('Во сколько это обойдется?');
 
-        do {
+        /* do {
             sum = +prompt('Во сколько это обойдется?');
-        } while (!isNumber(sum));
+        } while (!isNumber(sum)); */
 
     }
 
@@ -97,7 +113,7 @@ showTypeOf('тип переменной: ' + deposit);
 
 console.log('расходы за месяц: ' + expensesAmount);
 
-console.log('возможные расходы: ' + addExpenses.toLowerCase().split(', '));
+//console.log('возможные расходы: ' + addExpenses.toLowerCase().split(', '));
 
 console.log('срок достижения цели: ' + getTargetMonth(mission, accumulatedMonth));
 
