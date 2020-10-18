@@ -48,25 +48,26 @@ let firstCostQuestion, secondCostQuestion;
 
 function getExpensesMonth() {
 
-    let sum;
+    let sum = 0,
+        result;
 
 
     for (let i = 0; i < 2; i++) {
 
         if (i === 0) {
-            firstCostQuestion = +prompt('Введите обязательную статью расходов?');
+            firstCostQuestion = prompt('Введите обязательную статью расходов?');
         } else if (i === 1) {
-            secondCostQuestion = +prompt('Введите обязательную статью расходов?');
+            secondCostQuestion = prompt('Введите обязательную статью расходов?');
         }
 
+        do {
+            result = +prompt('Во сколько это обойдется?');
+        } while (!isNumber(result));
 
-        sum += +prompt('Во сколько это обойдется?');
-
-        /* do {
-            sum = +prompt('Во сколько это обойдется?');
-        } while (!isNumber(sum)); */
-
+        sum += +result;
     }
+
+
 
 
     return sum;
@@ -81,9 +82,9 @@ function getAccumulatedMonth() {
 const accumulatedMonth = getAccumulatedMonth();
 
 function getTargetMonth() {
-    if (mission / accumulatedMonth > 0) {
-        return Math.ceil(mission / accumulatedMonth);
-    } else if (mission / accumulatedMonth < 0) {
+    if (appData.mission / accumulatedMonth > 0) {
+        return Math.ceil(appData.mission / accumulatedMonth);
+    } else if (appData.mission / accumulatedMonth < 0) {
         return ('Цель не будет достигнута');
     }
 }
@@ -109,13 +110,13 @@ let getStatusIncome = function() {
 
 //вывод в консоль по порядку как в тз
 
-showTypeOf('тип переменной: ' + deposit);
+showTypeOf('тип переменной: ' + appData.deposit);
 
 console.log('расходы за месяц: ' + expensesAmount);
 
 //console.log('возможные расходы: ' + addExpenses.toLowerCase().split(', '));
 
-console.log('срок достижения цели: ' + getTargetMonth(mission, accumulatedMonth));
+console.log('срок достижения цели: ' + getTargetMonth(appData.mission, accumulatedMonth));
 
 console.log('дневной бюджет: ' + budgetDay);
 
