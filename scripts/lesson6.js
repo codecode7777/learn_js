@@ -24,11 +24,9 @@ function mainFunction() {
         } else if (request < num) {
             alert('Загаданное число больше');
             return start();
-        } else if (request === num) {
+        } else if (+request === num) {
             return confirm('Поздравляю, Вы угадали!!!');
         }
-
-
     }
 
     start();
