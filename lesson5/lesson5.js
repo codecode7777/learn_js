@@ -56,7 +56,7 @@ function getExpensesMonth() {
     return sum;
 }
 
-let expensesAmount = getExpensesMonth();
+const expensesAmount = getExpensesMonth();
 
 function getAccumulatedMonth() {
     return money - expensesAmount;
@@ -75,8 +75,7 @@ function getTargetMonth() {
 
 const budgetDay = Math.ceil(accumulatedMonth / 30);
 
-let getStatusIncome = function() {
-
+const getStatusIncome = function() {
     if (budgetDay > 1200) {
         return ('У вас высокий уровень дохода');
     } else if (budgetDay <= 1200 && budgetDay >= 600) {
@@ -86,7 +85,6 @@ let getStatusIncome = function() {
     } else {
         return ('Что то пошло не так');
     }
-
 };
 
 
