@@ -1,6 +1,6 @@
 'use strict';
 
-let isNumber = function(n) {
+const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
@@ -8,7 +8,12 @@ let isNumber = function(n) {
 
 
 function mainFunction() {
-    const num = 7;
+
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let num = randomNumber(1, 100);
 
     function start() {
         let request = prompt('Угадай число от 1 до 100');
@@ -32,6 +37,5 @@ function mainFunction() {
     start();
 
 }
-
 
 mainFunction();
