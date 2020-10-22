@@ -1,6 +1,6 @@
 'use strict';
 
-let isNumber = function(n) {
+const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
@@ -11,8 +11,7 @@ const deposit = confirm('Есть ли у вас депозит в банке?')
 const mission = 5000000;
 const period = 4;
 
-let start = function() {
-
+const start = function() {
     do {
         money = prompt('ваш месячный доход?');
     } while (!isNumber(money));
@@ -20,10 +19,10 @@ let start = function() {
 
 start();
 
-let showTypeOf = function(data) {
+
+const showTypeOf = function(data) {
     console.log(typeof(data));
     return data;
-
 };
 
 
@@ -31,7 +30,6 @@ let firstCostQuestion, secondCostQuestion;
 
 
 function getExpensesMonth() {
-
     let sum = 0,
         result;
 
@@ -43,7 +41,6 @@ function getExpensesMonth() {
             secondCostQuestion = +prompt('Введите обязательную статью расходов?');
         }
 
-
         do {
             result = prompt('Во сколько это обойдется?');
         } while (!isNumber(result) || result === '');
@@ -51,8 +48,6 @@ function getExpensesMonth() {
         sum += +result;
 
     }
-
-
     return sum;
 }
 
@@ -76,20 +71,17 @@ function getTargetMonth() {
 const budgetDay = Math.ceil(accumulatedMonth / 30);
 
 const getStatusIncome = function() {
-    if (budgetDay > 1200) {
+    if (budgetDay >= 1200) {
         return ('У вас высокий уровень дохода');
-    } else if (budgetDay <= 1200 && budgetDay >= 600) {
+    } else if (budgetDay >= 600) {
         return ('У вас средний уровень дохода');
-    } else if (budgetDay <= 600 && budgetDay >= 0) {
+    } else if (budgetDay >= 0) {
         return ('К сожалению у вас уровень дохода ниже среднего');
-    } else {
+    } else if (budgetDay < 0) {
         return ('Что то пошло не так');
     }
 };
 
-
-
-//вывод в консоль по порядку как в тз
 
 showTypeOf('тип переменной: ' + deposit);
 
