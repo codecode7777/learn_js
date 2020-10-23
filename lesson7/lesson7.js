@@ -21,7 +21,10 @@ start();
 let appData = {
     income: {},
     addIncome: [],
-    expenses: {},
+    expenses: {
+        firstA: firstCostQuestion,
+        secondA: secondCostQuestion
+    },
     addExpenses: [],
     deposit: false,
     mission: 50000,
@@ -34,28 +37,37 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        let sum = 0;
+        let sum = 0,
+            result;
         for (let i = 0; i < 2; i++) {
 
             if (i === 0) {
                 firstCostQuestion = prompt('Введите обязательную статью расходов?');
+                appData.expenses.firstA = firstCostQuestion;
+                console.log(appData.expenses.firstA);
             } else if (i === 1) {
                 secondCostQuestion = prompt('Введите обязательную статью расходов?');
+                appData.expenses.secondA = secondCostQuestion;
+                console.log(appData.expenses.secondA);
             }
 
             do {
-                appData.expenses = +prompt('Во сколько это обойдется?');
-            } while (!isNumber(appData.expenses));
+                result = prompt('Во сколько это обойдется?');
+                appData.expenses.look = result;
+                console.log(appData.expenses.look);
+            } while (!isNumber(result) || result === '');
 
-            appData.expenses[firstCostQuestion] += sum;
-            appData.expenses[secondCostQuestion] += sum;
-            sum += +appData.expenses;
+            sum += +result;
+
         }
 
+        console.log(sum);
         console.log(appData.expenses);
+
+
     },
 
-    getAccumulatedMonth: function() {
+    /* getAccumulatedMonth: function() {
         return appData.budget - appData.sum;
     },
 
@@ -79,7 +91,7 @@ let appData = {
             return ('Что то пошло не так');
         }
 
-    }
+    } */
 
 };
 
