@@ -21,10 +21,7 @@ start();
 let appData = {
     income: {},
     addIncome: [],
-    expenses: {
-        firstA: firstCostQuestion,
-        secondA: secondCostQuestion
-    },
+    expenses: {},
     addExpenses: [],
     deposit: false,
     mission: 50000,
@@ -38,17 +35,32 @@ let appData = {
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
         let sum = 0,
-            result;
+            result1,
+            result2;
         for (let i = 0; i < 2; i++) {
 
-            if (i === 0) {
+            i = 0;
+            firstCostQuestion = prompt('Введите обязательную статью расходов?');
+            do {
+                result1 = prompt('Во сколько это обойдется?');
+            } while (!isNumber(result1) || result1 === '');
+            appData.expenses.res1 = firstCostQuestion + ': ' + result1;
+            i = 1;
+            secondCostQuestion = prompt('Введите обязательную статью расходов?');
+            do {
+                result2 = prompt('Во сколько это обойдется?');
+            } while (!isNumber(result2) || result2 === '');
+            appData.expenses.res2 = secondCostQuestion + ': ' + Number(result2);
+
+            appData.expenses.summa = +result1 + Number(result2);
+
+
+            /* if (i === 0) {
                 firstCostQuestion = prompt('Введите обязательную статью расходов?');
                 appData.expenses.firstA = firstCostQuestion;
-                console.log(appData.expenses.firstA);
             } else if (i === 1) {
                 secondCostQuestion = prompt('Введите обязательную статью расходов?');
                 appData.expenses.secondA = secondCostQuestion;
-                console.log(appData.expenses.secondA);
             }
 
             do {
@@ -59,11 +71,14 @@ let appData = {
 
             sum += +result;
 
-        }
-
-        console.log(sum);
-        console.log(appData.expenses);
-
+        } */
+            console.log(appData.expenses);
+            /* console.log(appData.expenses.res1);
+            console.log(appData.expenses.res2);
+            console.log(appData.expenses.summa);
+            console.log(appData.expenses.res1 + ' ' + appData.expenses.res2);
+ */
+        } //delete
 
     },
 
@@ -96,8 +111,6 @@ let appData = {
 };
 
 appData.asking();
-
-
 
 /* let expensesAmount = getExpensesMonth();
 const accumulatedMonth = getAccumulatedMonth();
