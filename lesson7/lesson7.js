@@ -34,9 +34,9 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        let sum = 0,
-            result1,
-            result2;
+        let result1,
+            result2,
+            allSum;
         for (let i = 0; i < 2; i++) {
 
             i = 0;
@@ -54,33 +54,20 @@ let appData = {
 
             appData.expenses.summa = +result1 + Number(result2);
 
-
-            /* if (i === 0) {
-                firstCostQuestion = prompt('Введите обязательную статью расходов?');
-                appData.expenses.firstA = firstCostQuestion;
-            } else if (i === 1) {
-                secondCostQuestion = prompt('Введите обязательную статью расходов?');
-                appData.expenses.secondA = secondCostQuestion;
-            }
-
-            do {
-                result = prompt('Во сколько это обойдется?');
-                appData.expenses.look = result;
-                console.log(appData.expenses.look);
-            } while (!isNumber(result) || result === '');
-
-            sum += +result;
-
-        } */
             console.log(appData.expenses);
             /* console.log(appData.expenses.res1);
-            console.log(appData.expenses.res2);
-            console.log(appData.expenses.summa);
-            console.log(appData.expenses.res1 + ' ' + appData.expenses.res2);
- */
-        } //delete
+            console.log(appData.expenses.res1 + ' ' + appData.expenses.res2); */
+            for (let key in appData.expenses) {
+                allSum = console.log(appData.expenses.result1 + appData.expenses.result2);
+            }
+
+        }
+
+        appData.expenses.expensesMonth = allSum;
+        console.log("sum is: " + appData.expenses.expensesMonth);
 
     },
+
 
     /* getAccumulatedMonth: function() {
         return appData.budget - appData.sum;
