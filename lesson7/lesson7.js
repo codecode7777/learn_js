@@ -3,11 +3,11 @@
 let money;
 let firstCostQuestion, secondCostQuestion;
 
-let isNumber = function(n) {
+const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-let start = function() {
+const start = function() {
 
     do {
         money = prompt('ваш месячный доход?');
@@ -37,15 +37,13 @@ let appData = {
         let result1,
             result2,
             allSum;
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 1; i++) {
 
-            i = 0;
             firstCostQuestion = prompt('Введите обязательную статью расходов?');
             do {
                 result1 = prompt('Во сколько это обойдется?');
             } while (!isNumber(result1) || result1 === '');
             appData.expenses.res1 = firstCostQuestion + ': ' + result1;
-            i = 1;
             secondCostQuestion = prompt('Введите обязательную статью расходов?');
             do {
                 result2 = prompt('Во сколько это обойдется?');
@@ -83,15 +81,15 @@ let appData = {
 
     getStatusIncome: function() {
 
-        if (appData.budgetDay > 1200) {
-            return ('У вас высокий уровень дохода');
-        } else if (appData.budgetDay <= 1200 && appData.budgetDay >= 600) {
-            return ('У вас средний уровень дохода');
-        } else if (appData.budgetDay <= 600 && appData.budgetDay >= 0) {
-            return ('К сожалению у вас уровень дохода ниже среднего');
-        } else {
-            return ('Что то пошло не так');
-        }
+        if (budgetDay >= 1200) {
+        return ('У вас высокий уровень дохода');
+    } else if (budgetDay >= 600) {
+        return ('У вас средний уровень дохода');
+    } else if (budgetDay >= 0) {
+        return ('К сожалению у вас уровень дохода ниже среднего');
+    } else if (budgetDay < 0) {
+        return ('Что то пошло не так');
+    }
 
     } */
 
