@@ -1,7 +1,10 @@
 'use strict';
 
 let money;
-let firstCostQuestion, secondCostQuestion;
+let question,
+    sum = 0,
+    answer,
+    amount;
 
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -34,35 +37,20 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        let result1,
-            result2,
-            allSum;
-        for (let i = 0; i < 1; i++) {
 
-            firstCostQuestion = prompt('Введите обязательную статью расходов?');
+        for (let i = 0; i < 2; i++) {
+            question = prompt('Введите обязательную статью расходов?');
             do {
-                result1 = prompt('Во сколько это обойдется?');
-            } while (!isNumber(result1) || result1 === '');
-            appData.expenses.res1 = firstCostQuestion + ': ' + result1;
-            secondCostQuestion = prompt('Введите обязательную статью расходов?');
-            do {
-                result2 = prompt('Во сколько это обойдется?');
-            } while (!isNumber(result2) || result2 === '');
-            appData.expenses.res2 = secondCostQuestion + ': ' + Number(result2);
-
-            appData.expenses.summa = +result1 + Number(result2);
-
-            console.log(appData.expenses);
-            /* console.log(appData.expenses.res1);
-            console.log(appData.expenses.res1 + ' ' + appData.expenses.res2); */
-            for (let key in appData.expenses) {
-                allSum = console.log(appData.expenses.result1 + appData.expenses.result2);
-            }
-
+                answer = prompt('Во сколько это обойдется?');
+            } while (!isNumber(answer) || answer === '');
+            appData.expenses[question] = +answer;
         }
 
-        appData.expenses.expensesMonth = allSum;
-        console.log("sum is: " + appData.expenses.expensesMonth);
+        console.log(sum);
+        console.log(appData.expenses);
+
+        /* appData.expenses.expensesMonth = allSum;
+        console.log("sum is: " + appData.expenses.expensesMonth); */
 
     },
 
