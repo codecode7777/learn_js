@@ -10,7 +10,7 @@ const isNumber = function(n) {
 const start = function() {
 
     do {
-        money = prompt('ваш месячный доход?');
+        money = prompt('ваш месячный доход?', 10000);
     } while (!isNumber(money));
 };
 
@@ -48,7 +48,7 @@ const appData = {
 
 
         const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-        appData.addExpenses = addExpenses.toUpperCase().split(', ').toString();
+        appData.addExpenses = addExpenses.toUpperCase().toString().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
         let question,
             answer;
@@ -56,7 +56,7 @@ const appData = {
         for (let i = 0; i < 2; i++) {
 
             do {
-                question = prompt('Введите обязательную статью расходов?');
+                question = prompt('Введите обязательную статью расходов?', 'car');
             } while (isNumber(question) || question === '');
 
             do {
@@ -144,4 +144,7 @@ console.log(appData.getStatusIncome());
 } */
 
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
+
+
+appData.upStr();
 console.log(appData.addExpenses);
