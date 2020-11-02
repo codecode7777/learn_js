@@ -1,7 +1,25 @@
 'use strict';
 
-let money;
+const calculate = document.getElementById('start');
+const firstPlusBtn = document.getElementsByTagName('button')[0];
+const secondPlusBtn = document.getElementsByTagName('button')[1];
+const checkBox = document.querySelector('#deposit-check');
+const possibleIncomes = document.querySelectorAll('.additional_income-item');
 
+const budgetDay = document.getElementsByClassName('budget_day-value');
+const expensesMonth = document.getElementsByClassName('expenses_month-value');
+const adIncome = document.getElementsByClassName('additional_income-value');
+const adExpenses = document.getElementsByClassName('additional_expenses-value');
+const adPeriod = document.getElementsByClassName('income_period-value');
+const adTarget = document.getElementsByClassName('target_month-value');
+
+const range = document.querySelector('[type = "range"]');
+const targetAmount = document.querySelector('.target-amount');
+const budgetMonth = document.querySelector('.budget_month-value');
+const cancel = document.querySelector('#cancel');
+
+
+let money;
 
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -48,7 +66,7 @@ const appData = {
 
 
         const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-        appData.addExpenses = addExpenses.toUpperCase().toString().split(', ');
+        appData.addExpenses = addExpenses.toUpperCase().split(', ').toString();
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
         let question,
             answer;
@@ -145,6 +163,4 @@ console.log(appData.getStatusIncome());
 
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 
-
-appData.upStr();
 console.log(appData.addExpenses);
