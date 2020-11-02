@@ -48,7 +48,7 @@ const appData = {
 
 
         const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-        appData.addExpenses = addExpenses.split(', ').toUpperCase();
+        appData.addExpenses = addExpenses.toUpperCase().split(', ').toString();
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
         let question,
             answer;
@@ -145,8 +145,3 @@ console.log(appData.getStatusIncome());
 
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 console.log(appData.addExpenses);
-
-/* for (let key in appData.addExpenses) {
-    key = key.charAt(0).toUpperCase() + key.substr(1);
-    console.log(key);
-} */
