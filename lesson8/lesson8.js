@@ -146,5 +146,11 @@ console.log(appData.getStatusIncome());
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 
 
-appData.upStr();
+
 console.log(appData.addExpenses);
+
+for (let key in appData.expenses) {
+    let myStr = key[0].toLocaleUpperCase() + key.slice(1);
+    myStr.toString();
+    console.log(myStr);
+}
