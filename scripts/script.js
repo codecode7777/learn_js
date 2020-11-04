@@ -10,7 +10,7 @@ book[5].after(book[2]);
 book[5].before(book[3]);
 book[1].after(book[0]);
 
-body.style.background = "url('./image2/you-dont-know-js.jpg')";
+body.style.background = "url('./image/you-dont-know-js.jpg')";
 
 hCorrect[4].textContent = 'Книга 3. this и Прототипы Объектов';
 hCorrect[4].style.color = 'darkkhaki';
