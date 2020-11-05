@@ -3,24 +3,23 @@
 const calculate = document.getElementById('start');
 const firstPlusBtn = document.getElementsByTagName('button')[0];
 const secondPlusBtn = document.getElementsByTagName('button')[1];
+const possibleIncomes1 = document.querySelectorAll('.additional_income-item')[0];
+const possibleIncomes2 = document.querySelectorAll('.additional_income-item')[1];
 const checkBox = document.querySelector('#deposit-check');
-const possibleIncomes = document.querySelectorAll('.additional_income-item');
-
-const budgetDay = document.getElementsByClassName('budget_day-value');
-const expensesMonth = document.getElementsByClassName('expenses_month-value');
-const adIncome = document.getElementsByClassName('additional_income-value');
-const adExpenses = document.getElementsByClassName('additional_expenses-value');
-const adPeriod = document.getElementsByClassName('income_period-value');
-const adTarget = document.getElementsByClassName('target_month-value');
+const budgetDay = document.getElementsByClassName('budget_day-value')[0];
+const expensesMonth = document.getElementsByClassName('expenses_month-value')[0];
+const adIncome = document.getElementsByClassName('additional_income-value')[0];
+const adExpenses = document.getElementsByClassName('additional_expenses-value')[0];
+const adPeriod = document.getElementsByClassName('income_period-value')[0];
+const adTarget = document.getElementsByClassName('target_month-value')[0];
 const salary = document.querySelector('.salary-amount');
-const dopAmmountTitle = document.querySelector('.income-title');
+const dopAmmountTitle = document.getElementsByTagName('input')[2];
 const dopAmmount = document.querySelector('.income-amount');
-const mustExpensesTitle = document.querySelector('.expenses-title');
+const mustExpensesTitle = document.getElementsByTagName('input')[6];
 const mustExpenses = document.querySelector('.expenses-amount');
 const maybeExpenses = document.querySelector('.additional_expenses-item');
 const depositCalcAmount = document.querySelector('.deposit-amount');
 const depositCalcPercent = document.querySelector('.deposit-percent');
-
 const range = document.querySelector('[type = "range"]');
 const targetAmount = document.querySelector('.target-amount');
 const budgetMonth = document.querySelector('.budget_month-value');
@@ -149,10 +148,6 @@ const appData = {
 };
 
 
-
-
-
-
 appData.asking();
 appData.getBudget();
 appData.getTargetMonth();
@@ -165,10 +160,9 @@ console.log(appData.expensesMonth);
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 
-/* for (let key in appData) {
+for (let key in appData) {
     console.log('Наша программа включает в себя данные: ' + key + appData[key]);
-} */
+}
 
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
-
 console.log(appData.addExpenses);
