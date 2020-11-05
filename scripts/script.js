@@ -1,31 +1,34 @@
 'use strict';
 
-const start = document.getElementById('start'),
-    incomePlus = document.getElementsByTagName('button')[0],
-    expensesPlus = document.getElementsByTagName('button')[1],
-    checkBox = document.querySelector('#deposit-check'),
-    possibleIncomes = document.querySelectorAll('.additional_income-item');
-
-const adIncome = document.getElementsByClassName('additional_income-value'),
-    adExpenses = document.getElementsByClassName('additional_expenses-value'),
-    adPeriod = document.getElementsByClassName('income_period-value'),
-    adTarget = document.getElementsByClassName('target_month-value'),
-    salary = document.querySelector('.salary-amount'),
-    dopAmmountTitle = document.querySelector('.income-title'),
-    dopAmmount = document.querySelector('.income-amount'),
-    mustExpensesTitle = document.querySelector('.expenses-title'),
-    maybeExpenses = document.querySelector('.additional_expenses-item'),
-    depositCalcAmount = document.querySelector('.deposit-amount'),
-    depositCalcPercent = document.querySelector('.deposit-percent');
-
-const range = document.querySelector('[type = "range"]'),
-    targetAmount = document.querySelector('.target-amount'),
-    cancel = document.querySelector('#cancel');
+const start = document.getElementById('start');
+const firstPlusBtn = document.getElementsByTagName('button')[0];
+const expensesPlus = document.getElementsByTagName('button')[1];
+const possibleIncomes1 = document.querySelectorAll('.additional_income-item')[0];
+const possibleIncomes2 = document.querySelectorAll('.additional_income-item')[1];
+const checkBox = document.querySelector('#deposit-check');
+const adIncome = document.getElementsByClassName('additional_income-value')[0];
+const adExpenses = document.getElementsByClassName('additional_expenses-value')[0];
+const adPeriod = document.getElementsByClassName('income_period-value')[0];
+const adTarget = document.getElementsByClassName('target_month-value')[0];
+const salary = document.querySelector('.salary-amount');
+const dopAmmountTitle = document.getElementsByTagName('input')[2];
+const dopAmmount = document.querySelector('.income-amount');
+const mustExpensesTitle = document.getElementsByTagName('input')[6];
+const mustExpenses = document.querySelector('.expenses-amount');
+const maybeExpenses = document.querySelector('.additional_expenses-item');
+const depositCalcAmount = document.querySelector('.deposit-amount');
+const depositCalcPercent = document.querySelector('.deposit-percent');
+const range = document.querySelector('[type = "range"]');
+const targetAmount = document.querySelector('.target-amount');
+const cancel = document.querySelector('#cancel');
+//const expensesMonth = document.getElementsByClassName('expenses_month-value')[0];
+//const budgetDay = document.getElementsByClassName('budget_day-value')[0];
 
 let expensesItems = document.querySelectorAll('.expenses-items'),
-    budgetDayValue = document.getElementsByClassName('budget_day-value'),
+    budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
     budgetMonthValue = document.querySelector('.budget_month-value'),
     expensesMonth = document.getElementsByClassName('expenses_month-value');
+
 
 
 
