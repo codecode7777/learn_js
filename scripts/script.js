@@ -27,7 +27,7 @@ const cancel = document.querySelector('#cancel');
 let expensesItems = document.querySelectorAll('.expenses-items'),
     budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
     budgetMonthValue = document.querySelector('.budget_month-value'),
-    expensesMonth = document.getElementsByClassName('expenses_month-value');
+    expensesMonth = document.getElementsByClassName('expenses_month-value')[0];
 
 
 
@@ -67,13 +67,36 @@ const appData = {
         appData.getStatusIncome();
         appData.getInfoDeposit();
         appData.showResult();
-        console.log(appData.expensesMonth);
     },
+
+    getBudget: function() {
+        appData.budgetMonth = +appData.budget - appData.expensesMonth;
+        appData.budgetDay = Math.ceil(appData.budgetMonth / 30);
+        return appData.budgetDay;
+    },
+
+
+    getExpenses: function() {
+        expensesItems.forEach(function(item) {
+            let itemExpenses = item.querySelector('.expenses-title').value;
+            let cashExpenses = item.querySelector('.expenses-amount').value;
+            if (itemExpenses !== '' && cashExpenses !== '') {
+                appData.expenses[itemExpenses] = cashExpenses;
+            }
+
+            for (let key in appData.expenses) {
+                appData.expensesMonth += +appData.expenses[key];
+            }
+            console.log(appData.expensesMonth);
+        });
+    },
+
 
     showResult: function() {
         budgetMonthValue = appData.budgetMonth;
         budgetDayValue = appData.budgetDay;
         expensesMonth = appData.expensesMonth;
+        console.log('month: ' + budgetMonthValue + ' day: ' + budgetDayValue + ' expenses: ' + expensesMonth);
     },
 
     addExpensesBlock: function() {
@@ -86,15 +109,6 @@ const appData = {
         }
     },
 
-    getExpenses: function() {
-        expensesItems.forEach(function(item) {
-            let itemExpenses = item.querySelector('.expenses-title').value;
-            let cashExpenses = item.querySelector('.expenses-amount').value;
-            if (itemExpenses !== '' && cashExpenses !== '') {
-                appData.expenses[itemExpenses] = cashExpenses;
-            }
-        });
-    },
 
     asking: function() {
 
@@ -117,13 +131,6 @@ const appData = {
 
 
 
-    },
-
-
-    getBudget: function() {
-        appData.budgetMonth = +appData.budget - appData.expensesMonth;
-        appData.budgetDay = Math.ceil(appData.budgetMonth / 30);
-        return appData.budgetDay;
     },
 
 
@@ -196,5 +203,3 @@ console.log(appData.getStatusIncome()); */
 //console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 
 //console.log(appData.addExpenses);
-
-console.log(appData.expenses);
