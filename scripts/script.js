@@ -200,23 +200,14 @@ const appData = {
 };
 
 
-start.addEventListener('click', function() {
-    /* if (salary.value === '') {
-        start.disabled = true;
-    } else if (salary.value !== '') {
-        start.disabled = false;
-        appData.start();
-    } */
-
-    if (salary.value === '') {
-        start.setAttribute("disabled", "disabled");
-    } else if (salary.value !== '') {
-        start.setAttribute("enabled", "enabled");
-        appData.start();
-    }
+if (salary.value === '') {
+    start.setAttribute('disabled', 'disabled');
+} else if (salary.value !== '') {
+    start.removeAttribute('disabled');
+    start.addEventListener('click', appData.start);
+}
 
 
-});
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 range.addEventListener('change', appData.changeRange);
