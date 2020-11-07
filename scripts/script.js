@@ -200,13 +200,11 @@ const appData = {
 };
 
 
-if (salary.value === '') {
-    start.setAttribute('disabled', 'disabled');
-} else if (salary.value !== '') {
-    start.removeAttribute('disabled');
-    start.addEventListener('click', appData.start);
-}
-
+start.addEventListener('click', function() {
+    if (salary.value !== '') {
+        appData.start();
+    }
+});
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
