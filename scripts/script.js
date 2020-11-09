@@ -32,6 +32,11 @@ const render = function() {
             render();
         });
 
+        const deleteBtn = li.querySelector('.todo-remove');
+        deleteBtn.addEventListener('click', function() {
+            li.remove();
+        });
+
     });
 };
 
@@ -43,8 +48,19 @@ todoControl.addEventListener('submit', function(event) {
         completed: false
     };
 
-    todoData.push(newTodo);
-    render();
+    if (headerInput.value !== '') {
+        todoData.push(newTodo);
+        headerInput.value = '';
+        render();
+    }
+
+    localStorage.mySave = JSON.stringify(todoData);
+
 });
 
 render();
+const dataPage = function() {
+    let sa = localStorage.mySave;
+    return sa;
+};
+dataPage();
