@@ -4,7 +4,11 @@ const book = document.querySelectorAll('.book'),
     body = document.querySelector('body'),
     hCorrect = document.querySelectorAll('h2'),
     removeAdd = document.querySelector('.adv'),
-    liSwitch = document.querySelectorAll('li');
+    liSwitch = document.querySelectorAll('li'),
+    book5 = document.querySelectorAll('.book')[5],
+    liBook5 = book5.querySelectorAll('li'),
+    book6 = document.querySelectorAll('.book')[2],
+    liBook6 = book6.querySelectorAll('li');
 
 book[5].after(book[2]);
 book[5].before(book[3]);
@@ -21,10 +25,10 @@ liSwitch[9].after(liSwitch[2]);
 liSwitch[3].after(liSwitch[6]);
 liSwitch[4].before(liSwitch[8]);
 
-liSwitch[47].after(liSwitch[55]);
-liSwitch[50].after(liSwitch[48]);
-liSwitch[54].before(liSwitch[51]);
+liBook5[1].after(liBook5[9]);
+liBook5[4].after(liBook5[2]);
+liBook5[8].before(liBook5[5]);
 
 const chapter = document.createElement('li');
 chapter.textContent = 'Глава 8: За пределами ES6';
-liSwitch[25].after(chapter);
+liBook6[8].after(chapter);
