@@ -16,17 +16,16 @@ const mayExpenses = document.querySelector('.additional_expenses-item');
 const depositCalcAmount = document.querySelector('.deposit-amount');
 const depositCalcPercent = document.querySelector('.deposit-percent');
 const targetAmount = document.querySelector('.target-amount');
-const cancel = document.querySelector('#cancel');
-//const expensesMonth = document.getElementsByClassName('expenses_month-value')[0];
-//const budgetDay = document.getElementsByClassName('budget_day-value')[0];
-let expensesItems = document.querySelectorAll('.expenses-items'),
+const cancel = document.querySelector('#cancel'),
     range = document.querySelector('[type = "range"]'),
-    incomeItems = document.querySelectorAll('.income-items'),
     budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
     budgetMonthValue = document.querySelector('.budget_month-value'),
     expensesMonth = document.getElementsByClassName('expenses_month-value')[0],
     mayExpensesEnd = document.getElementsByClassName('additional_expenses-value')[0],
     periodAmount = document.querySelector('.period-amount');
+
+let expensesItems = document.querySelectorAll('.expenses-items'),
+    incomeItems = document.querySelectorAll('.income-items');
 
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -65,8 +64,8 @@ const appData = {
 
     getExpenses: function() {
         expensesItems.forEach(function(item) {
-            let itemExpenses = item.querySelector('.expenses-title').value;
-            let cashExpenses = item.querySelector('.expenses-amount').value;
+            const itemExpenses = item.querySelector('.expenses-title').value;
+            const cashExpenses = item.querySelector('.expenses-amount').value;
             if (itemExpenses !== '' && cashExpenses !== '') {
                 appData.expenses[itemExpenses] = cashExpenses;
             }
@@ -80,8 +79,8 @@ const appData = {
 
     getIncome: function() {
         incomeItems.forEach(function(item) {
-            let itemIncome = item.querySelector('.income-title').value;
-            let cashIncome = item.querySelector('.income-amount').value;
+            const itemIncome = item.querySelector('.income-title').value;
+            const cashIncome = item.querySelector('.income-amount').value;
             if (itemIncome !== '' && cashIncome !== '') {
                 appData.income[itemIncome] = +cashIncome;
             }
@@ -95,7 +94,7 @@ const appData = {
 
 
     getAddExpenses: function() {
-        let addExpenses = mayExpenses.value.split(', ');
+        const addExpenses = mayExpenses.value.split(', ');
         addExpenses.forEach(function(item) {
             item = item.trim();
             if (item !== '') {
@@ -107,7 +106,7 @@ const appData = {
 
     getAddIncome: function() {
         possibleIncome.forEach(function(item) {
-            let itemValue = item.value.trim();
+            const itemValue = item.value.trim();
             if (item.value !== '') {
                 appData.addIncome.push(itemValue);
             }
@@ -118,7 +117,7 @@ const appData = {
 
 
     addExpensesBlock: function() {
-        let cloneExpensesItem = expensesItems[0].cloneNode(true);
+        const cloneExpensesItem = expensesItems[0].cloneNode(true);
         expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
         expensesItems = document.querySelectorAll('.expenses-items');
 
@@ -129,7 +128,7 @@ const appData = {
 
 
     addIncomeBlock: function() {
-        let cloneIncomeItems = incomeItems[0].cloneNode(true);
+        const cloneIncomeItems = incomeItems[0].cloneNode(true);
         incomeItems[0].parentNode.insertBefore(cloneIncomeItems, incomePlus);
         incomeItems = document.querySelectorAll('.income-items');
 
@@ -140,7 +139,7 @@ const appData = {
 
 
     changeRange: function(event) {
-        let stepValue = event.target.value;
+        const stepValue = event.target.value;
         periodAmount.textContent = stepValue;
     },
 
