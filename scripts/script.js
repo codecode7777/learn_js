@@ -7,6 +7,8 @@ const todoControl = document.querySelector('.todo-control'),
 
 const todoData = [];
 
+
+
 const render = function() {
     todoList.textContent = '';
     todoCompleted.textContent = '';
@@ -40,6 +42,12 @@ const render = function() {
     });
 };
 
+const dataPage = function() {
+    let sa = JSON.parse(localStorage.mySave);
+    return sa;
+    //localStorage.getItem('save');
+};
+
 todoControl.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -55,12 +63,9 @@ todoControl.addEventListener('submit', function(event) {
     }
 
     localStorage.mySave = JSON.stringify(todoData);
+    //localStorage.setItem('save', JSON.stringify(todoData));
 
 });
 
-render();
-const dataPage = function() {
-    let sa = localStorage.mySave;
-    return sa;
-};
 dataPage();
+render();
