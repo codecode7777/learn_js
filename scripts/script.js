@@ -3,11 +3,33 @@
 const todoControl = document.querySelector('.todo-control'),
     headerInput = document.querySelector('.header-input'),
     todoList = document.querySelector('.todo-list'),
-    todoCompleted = document.querySelector('.todo-completed');
+    todoCompleted = document.querySelector('.todo-completed'),
+    cont = document.querySelector('.todo-container');
 
 const todoData = [];
 
+const dataSave = function() {
+    let save2;
+    let save = JSON.parse(localStorage.mySave);
+    for (let key in save) {
+        save2 = save[key];
+        console.log(save2);
+    }
 
+
+    save.forEach(function(item) {
+
+        if (item.completed) {
+            todoCompleted.append(item);
+        } else {
+            todoList.append(item);
+        }
+    });
+};
+
+if (localStorage.mySave) {
+    dataSave();
+}
 
 const render = function() {
     todoList.textContent = '';
@@ -42,11 +64,7 @@ const render = function() {
     });
 };
 
-const dataPage = function() {
-    let sa = JSON.parse(localStorage.mySave);
-    return sa;
-    //localStorage.getItem('save');
-};
+
 
 todoControl.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -63,9 +81,6 @@ todoControl.addEventListener('submit', function(event) {
     }
 
     localStorage.mySave = JSON.stringify(todoData);
-    //localStorage.setItem('save', JSON.stringify(todoData));
 
 });
-
-dataPage();
 render();
