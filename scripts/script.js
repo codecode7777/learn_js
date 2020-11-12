@@ -8,28 +8,59 @@ const todoControl = document.querySelector('.todo-control'),
 
 const todoData = [];
 
+
 const dataSave = function() {
-    let save2;
-    let save = JSON.parse(localStorage.mySave);
-    for (let key in save) {
-        save2 = save[key];
-        console.log(save2);
-    }
-
-
+    const save = JSON.parse(localStorage.mySave);
+    console.log(save);
     save.forEach(function(item) {
+        console.log(item);
+        const create = document.createElement('li');
+        create.classList.add('todo-item');
+        create.innerHTML = '<span class="text-todo">' + item.value + '</span>' +
+            '<div class="todo-buttons">' +
+            '<button class="todo-remove"></button>' +
+            '<button class="todo-complete"></button>' +
+            '</div>';
+
+        console.log(create);
 
         if (item.completed) {
-            todoCompleted.append(item);
+            todoCompleted.append(create);
         } else {
-            todoList.append(item);
+            todoList.append(create);
         }
+        const completeBtn = create.querySelector('.todo-complete');
+        completeBtn.addEventListener('click', function() {
+            item.completed = !item.completed;
+            dataSave();
+        });
+
+        const deleteBtn = create.querySelector('.todo-remove');
+        deleteBtn.addEventListener('click', function() {
+            create.remove();
+
+
+        });
+
     });
+
+
 };
+
 
 if (localStorage.mySave) {
     dataSave();
 }
+
+/* if (localStorage.mySave) {
+    let xx = function() {
+        for (let i = 0; i < 1; i++) {
+            dataSave();
+        }
+    };
+
+    xx();
+} */
 
 const render = function() {
     todoList.textContent = '';
