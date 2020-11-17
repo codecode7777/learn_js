@@ -38,6 +38,8 @@ const render = function() {
         const deleteBtn = li.querySelector('.todo-remove');
         deleteBtn.addEventListener('click', function() {
             li.remove();
+            todoData.splice(todoData.indexOf(item), 1);
+            localStorage.mySave = JSON.stringify(todoData);
         });
 
     });
