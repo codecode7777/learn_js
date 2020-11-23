@@ -193,69 +193,72 @@ const appData = {
 
     calcPeriod: function() {
         return this.budgetMonth * range.value;
+    },
+
+    reset: function() {
+        budgetMonthValue.value = '';
+        budgetDayValue.value = '';
+        expensesMonth.value = '';
+        mayExpensesEnd.value = '';
+        adIncome.value = '';
+        targetMonthValue.value = '';
+        totalSavedIncome.value = '';
+        this.mission = 50000;
+        this.budget = 0;
+        this.budgetDay = 0;
+        this.budgetMonth = 0;
+        this.expensesMonth = 0;
+        this.incomeMonth = 0;
+        this.percentDeposit = 0;
+        this.moneyDeposit = 0;
+        this.income = {};
+        this.addIncome = [];
+        this.expenses = {};
+        this.addExpenses = [];
+        this.deposit = false;
+        totalSavedIncome.value = '';
+
+        salary.value = '';
+        incomeItems.forEach(function(item) {
+            item.querySelector('.income-title').value = '';
+            item.querySelector('.income-amount').value = '';
+        });
+        expensesItems.forEach(function(item) {
+            item.querySelector('.expenses-title').value = '';
+            item.querySelector('.expenses-amount').value = '';
+        });
+        possibleIncome[0].value = '';
+        possibleIncome[1].value = '';
+        mayExpenses.value = '';
+        targetAmount.value = '';
+        range.value = 1;
+        periodAmount.textContent = range.value;
+
+        salary.removeAttribute('disabled');
+        incomeItems.forEach(function(item) {
+            item.querySelector('.income-title').removeAttribute('disabled');
+            item.querySelector('.income-amount').removeAttribute('disabled');
+        });
+        expensesItems.forEach(function(item) {
+            item.querySelector('.expenses-title').removeAttribute('disabled');
+            item.querySelector('.expenses-amount').removeAttribute('disabled');
+        });
+        possibleIncome[0].removeAttribute('disabled');
+        possibleIncome[1].removeAttribute('disabled');
+        mayExpenses.removeAttribute('disabled');
+        targetAmount.removeAttribute('disabled');
     }
 
+
+
 };
-
-function reset() {
-    budgetMonthValue.value = '';
-    budgetDayValue.value = '';
-    expensesMonth.value = '';
-    mayExpensesEnd.value = '';
-    adIncome.value = '';
-    targetMonthValue.value = '';
-    totalSavedIncome.value = '';
-    appData.mission = 50000;
-    appData.budget = 0;
-    appData.budgetDay = 0;
-    appData.budgetMonth = 0;
-    appData.expensesMonth = 0;
-    appData.incomeMonth = 0;
-    appData.percentDeposit = 0;
-    appData.moneyDeposit = 0;
-    appData.income = {};
-    appData.addIncome = [];
-    appData.expenses = {};
-    appData.addExpenses = [];
-    appData.deposit = false;
-    totalSavedIncome.value = '';
-
-    salary.value = '';
-    incomeItems.forEach(function(item) {
-        item.querySelector('.income-title').value = '';
-        item.querySelector('.income-amount').value = '';
-    });
-    expensesItems.forEach(function(item) {
-        item.querySelector('.expenses-title').value = '';
-        item.querySelector('.expenses-amount').value = '';
-    });
-    possibleIncome[0].value = '';
-    possibleIncome[1].value = '';
-    mayExpenses.value = '';
-    targetAmount.value = '';
-    range.value = 1;
-    periodAmount.textContent = range.value;
-
-    salary.removeAttribute('disabled');
-    incomeItems.forEach(function(item) {
-        item.querySelector('.income-title').removeAttribute('disabled');
-        item.querySelector('.income-amount').removeAttribute('disabled');
-    });
-    expensesItems.forEach(function(item) {
-        item.querySelector('.expenses-title').removeAttribute('disabled');
-        item.querySelector('.expenses-amount').removeAttribute('disabled');
-    });
-    possibleIncome[0].removeAttribute('disabled');
-    possibleIncome[1].removeAttribute('disabled');
-    mayExpenses.removeAttribute('disabled');
-    targetAmount.removeAttribute('disabled');
-}
 
 
 start.addEventListener('click', function() {
 
     if (salary.value !== '') {
-        appData.start();
+        appData.start.apply(appData);
+        //appData.start();
         salary.setAttribute('disabled', 'false');
         incomeItems.forEach(function(item) {
             item.querySelector('.income-title').setAttribute('disabled', 'false');
@@ -275,7 +278,7 @@ start.addEventListener('click', function() {
 
 
         cansel.addEventListener('click', function() {
-            reset();
+            appData.reset();
             cansel.style.display = 'none';
             start.style.display = 'inline-block';
         });
