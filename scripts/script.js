@@ -258,6 +258,7 @@ start.addEventListener('click', function() {
 
     if (salary.value !== '') {
         appData.start.apply(appData);
+        console.log(this);
         //appData.start();
         salary.setAttribute('disabled', 'false');
         incomeItems.forEach(function(item) {
