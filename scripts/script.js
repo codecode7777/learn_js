@@ -1,6 +1,6 @@
 'use strict';
 
-const start = document.getElementById('start');
+const startBtn = document.getElementById('start');
 const cansel = document.getElementById('cancel');
 const incomePlus = document.getElementsByTagName('button')[0];
 const expensesPlus = document.getElementsByTagName('button')[1];
@@ -52,7 +52,25 @@ const appData = {
         this.getAddIncome();
         this.getBudget();
         this.showResult();
+        salary.setAttribute('disabled', 'false');
+        incomeItems.forEach(function(item) {
+            item.querySelector('.income-title').setAttribute('disabled', 'false');
+            item.querySelector('.income-amount').setAttribute('disabled', 'false');
+        });
+        expensesItems.forEach(function(item) {
+            item.querySelector('.expenses-title').setAttribute('disabled', 'false');
+            item.querySelector('.expenses-amount').setAttribute('disabled', 'false');
+        });
+        possibleIncome[0].setAttribute('disabled', 'false');
+        possibleIncome[1].setAttribute('disabled', 'false');
+        mayExpenses.setAttribute('disabled', 'false');
+        targetAmount.setAttribute('disabled', 'false');
+
+        startBtn.style.display = 'none';
+        cansel.style.display = 'inline-block';
     },
+
+
 
 
     getBudget: function() {
@@ -203,19 +221,19 @@ const appData = {
         adIncome.value = '';
         targetMonthValue.value = '';
         totalSavedIncome.value = '';
-        this.mission = 50000;
-        this.budget = 0;
-        this.budgetDay = 0;
-        this.budgetMonth = 0;
-        this.expensesMonth = 0;
-        this.incomeMonth = 0;
-        this.percentDeposit = 0;
-        this.moneyDeposit = 0;
-        this.income = {};
-        this.addIncome = [];
-        this.expenses = {};
-        this.addExpenses = [];
-        this.deposit = false;
+        appData.mission = 50000;
+        appData.budget = 0;
+        appData.budgetDay = 0;
+        appData.budgetMonth = 0;
+        appData.expensesMonth = 0;
+        appData.incomeMonth = 0;
+        appData.percentDeposit = 0;
+        appData.moneyDeposit = 0;
+        appData.income = {};
+        appData.addIncome = [];
+        appData.expenses = {};
+        appData.addExpenses = [];
+        appData.deposit = false;
         totalSavedIncome.value = '';
 
         salary.value = '';
@@ -247,48 +265,36 @@ const appData = {
         possibleIncome[1].removeAttribute('disabled');
         mayExpenses.removeAttribute('disabled');
         targetAmount.removeAttribute('disabled');
+
+        if (expensesItems.length > 1) {
+            expensesItems.splice(1, 2);
+            console.log(expensesItems);
+        }
+
+
     }
-
-
 
 };
 
-
-start.addEventListener('click', function() {
-
-    if (salary.value !== '') {
-        appData.start.apply(appData);
-        console.log(this);
-        //appData.start();
-        salary.setAttribute('disabled', 'false');
-        incomeItems.forEach(function(item) {
-            item.querySelector('.income-title').setAttribute('disabled', 'false');
-            item.querySelector('.income-amount').setAttribute('disabled', 'false');
-        });
-        expensesItems.forEach(function(item) {
-            item.querySelector('.expenses-title').setAttribute('disabled', 'false');
-            item.querySelector('.expenses-amount').setAttribute('disabled', 'false');
-        });
-        possibleIncome[0].setAttribute('disabled', 'false');
-        possibleIncome[1].setAttribute('disabled', 'false');
-        mayExpenses.setAttribute('disabled', 'false');
-        targetAmount.setAttribute('disabled', 'false');
-
-        start.style.display = 'none';
-        cansel.style.display = 'inline-block';
-
-
-        cansel.addEventListener('click', function() {
-            appData.reset();
-            cansel.style.display = 'none';
-            start.style.display = 'inline-block';
-        });
-
-    } else {
-        console.log('enter smth');
+salary.addEventListener('input', function() {
+    if (salary.value === '') {
+        startBtn.setAttribute('disabled', 'true');
+    } else if (salary.value !== '') {
+        startBtn.removeAttribute('disabled');
     }
+});
+
+
+
+startBtn.addEventListener('click', function() {
+    appData.start();
 });
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 range.addEventListener('change', appData.changeRange);
+cansel.addEventListener('click', function() {
+    appData.reset();
+    cansel.style.display = 'none';
+    startBtn.style.display = 'inline-block';
+});
