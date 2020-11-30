@@ -2,8 +2,8 @@
 
 const startBtn = document.getElementById('start'),
     cansel = document.getElementById('cancel'),
-    incomePlus = document.querySelector('income_add'),
-    expensesPlus = document.querySelector('expenses_add'),
+    incomePlus = document.querySelector('.income_add'),
+    expensesPlus = document.querySelector('.expenses_add'),
     possibleIncome = document.querySelectorAll('.additional_income-item'),
     checkBox = document.querySelector('#deposit-check'),
     adIncome = document.querySelector('.additional_income-value'),
@@ -19,7 +19,7 @@ const startBtn = document.getElementById('start'),
     targetAmount = document.querySelector('.target-amount'),
     cancel = document.querySelector('#cancel'),
     range = document.querySelector('[type = "range"]'),
-    budgetDayValue = document.querySelector('budget_day-value'),
+    budgetDayValue = document.querySelector('.budget_day-value'),
     budgetMonthValue = document.querySelector('.budget_month-value'),
     expensesMonth = document.querySelector('.expenses_month-value'),
     mayExpensesEnd = document.querySelector('.additional_expenses-value'),
@@ -275,7 +275,13 @@ class AppData {
 }
 
 
+
+
+
 const appData = new AppData();
+
+const starter = appData.start.bind(appData);
+//const adl = appData.addEventsListeners.bind(appData);
 
 
 startBtn.disabled = true;
@@ -284,3 +290,4 @@ salary.addEventListener('input', function() {
 });
 
 appData.addEventsListeners();
+//appData.adl();
