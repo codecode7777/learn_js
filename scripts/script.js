@@ -247,7 +247,10 @@ class AppData {
         targetAmount.removeAttribute('disabled');
 
         for (let i = 1; i < incomeItems.length; i++) {
+            console.log(incomeItems[i]);
             incomeItems[i].remove();
+            //incomeItems = [];
+            /*  incomeItems[i].value = 0; */
             incomePlus.style.display = 'block';
         }
 
@@ -255,6 +258,9 @@ class AppData {
             expensesItems[i].remove();
             expensesPlus.style.display = 'block';
         }
+
+
+
 
         allInput.forEach(function(item) {
             item.value = '';
@@ -265,7 +271,8 @@ class AppData {
     }
 
     addEventsListeners() {
-        startBtn.addEventListener('click', this.start);
+        const starter = this.start.bind(appData);
+        startBtn.addEventListener('click', starter);
         expensesPlus.addEventListener('click', this.addExpensesBlock);
         incomePlus.addEventListener('click', this.addIncomeBlock);
         range.addEventListener('change', this.changeRange);
@@ -275,13 +282,7 @@ class AppData {
 }
 
 
-
-
-
 const appData = new AppData();
-
-const starter = appData.start.bind(appData);
-//const adl = appData.addEventsListeners.bind(appData);
 
 
 startBtn.disabled = true;
@@ -290,4 +291,3 @@ salary.addEventListener('input', function() {
 });
 
 appData.addEventsListeners();
-//appData.adl();
