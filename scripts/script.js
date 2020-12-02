@@ -224,8 +224,8 @@ class AppData {
         this.percentDeposit = 0;
         this.moneyDeposit = 0;
         this.income = {};
-        this.addIncome = [];
         this.expenses = {};
+        this.addIncome = [];
         this.addExpenses = [];
         this.deposit = false;
 
@@ -247,10 +247,7 @@ class AppData {
         targetAmount.removeAttribute('disabled');
 
         for (let i = 1; i < incomeItems.length; i++) {
-            console.log(incomeItems[i]);
             incomeItems[i].remove();
-            //incomeItems = [];
-            /*  incomeItems[i].value = 0; */
             incomePlus.style.display = 'block';
         }
 
@@ -259,7 +256,14 @@ class AppData {
             expensesPlus.style.display = 'block';
         }
 
-
+        for (let val of expensesItems) {
+            //val.value = 0;
+            //val = 0;
+            //val.value = '';
+            //val.remove();
+            console.log(expensesItems);
+        }
+        //expensesItems = [];
 
 
         allInput.forEach(function(item) {
